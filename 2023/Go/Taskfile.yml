@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+
+  default:
+    desc: "Prints this message"
+    cmds:
+      - cmd: task --list-all
+
+  test:coverage:
+    desc: Runs tests and produce coverage report
+    cmds:
+      - mkdir --parents out
+      - go test -coverprofile=out/coverage.out ./... 
+      - go tool cover -html=out/coverage.out

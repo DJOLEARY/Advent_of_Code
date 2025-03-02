@@ -1,0 +1,5 @@
+(executable
+ (public_name AoC_2024)
+ (name main)
+ (modes byte exe)
+ (libraries AoC_2024))
