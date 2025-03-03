@@ -6,9 +6,10 @@ maintainer: ["D.J. O'Leary"]
 authors: ["D.J. O'Leary"]
 license: "MIT"
 tags: ["aoc2024" "Advent of Code 2024"]
-homepage: "https://github.com/DJOLEARY/AoC_2024"
-doc: "https://github.com/DJOLEARY/AoC_2024/blob/main/README.md"
-bug-reports: "https://github.com/DJOLEARY/AoC_2024/issues"
+homepage: "https://github.com/DJOLEARY/Advent_of_Code"
+doc:
+  "https://github.com/DJOLEARY/Advent_of_Code/blob/main/2024/OCaml/README.md"
+bug-reports: "https://github.com/DJOLEARY/Advent_of_Code/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.16"}
@@ -28,4 +29,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/DJOLEARY/AoC_2024.git"
+dev-repo: "git+https://github.com/DJOLEARY/Advent_of_Code.git"

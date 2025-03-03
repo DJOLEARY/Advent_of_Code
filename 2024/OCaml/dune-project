@@ -5,7 +5,7 @@
 (generate_opam_files true)
 
 (source
- (github DJOLEARY/AoC_2024))
+ (github DJOLEARY/Advent_of_Code))
 
 (authors "D.J. O'Leary")
 
@@ -13,7 +13,7 @@
 
 (license MIT)
 
-(documentation https://github.com/DJOLEARY/AoC_2024/blob/main/README.md)
+(documentation https://github.com/DJOLEARY/Advent_of_Code/blob/main/2024/OCaml/README.md)
 
 (map_workspace_root false)
 
