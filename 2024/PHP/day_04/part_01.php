@@ -5,7 +5,7 @@ declare(strict_types=1);
 spl_autoload_register(fn(string $className) => require "{$className}.php");
 
 // Assumes executed from workspace root
-$input = new Input('input/day_04.txt');
+$input = new Input('../_input/day_04.txt');
 if ($input->contents === "") {
     throw new RuntimeException("File not found");
 }

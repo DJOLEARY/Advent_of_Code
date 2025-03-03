@@ -1,22 +1,21 @@
-# Advent of Code 2024
+# OCaml 2024
 
 ## Getting Started
 
 ### How to Build
 
 ```sh
-dune build
+task build
 ```
 
 ### How to Run
 
 ```sh
-dune exec AoC_2024
+task run
 ```
 
 ### How to Test
 
 ```sh
-dune runtest
+task test
 ```
-

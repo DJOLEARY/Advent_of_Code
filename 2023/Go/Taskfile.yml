@@ -1,17 +1,23 @@
 # https://taskfile.dev
 
-version: '3'
-
+version: "3"
 tasks:
-
   default:
-    desc: "Prints this message"
+    desc: Prints this message
     cmds:
       - cmd: task --list-all
-
+  build:
+    cmds:
+      - cmd: go build -o=out/Advent_of_Code_2023 main.go
+  run:
+    cmds:
+      - cmd: go run main.go {{.CLI_ARGS}}
+  test:
+    cmds:
+      - cmd: go test ./...
   test:coverage:
     desc: Runs tests and produce coverage report
     cmds:
-      - mkdir --parents out
-      - go test -coverprofile=out/coverage.out ./... 
-      - go tool cover -html=out/coverage.out
+      - cmd: mkdir --parents out
+      - cmd: go test -coverprofile=out/coverage.out ./...
+      - cmd: go tool cover -html=out/coverage.out

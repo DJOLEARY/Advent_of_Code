@@ -1,4 +1,21 @@
-# Advent of Code 2023
-[![Test](https://github.com/DJOLEARY/AoC_2023/actions/workflows/go.yml/badge.svg?event=push)](https://github.com/DJOLEARY/AoC_2023/actions/workflows/go.yml)
+# Go 2023
 
-Done with the aim of learning golang
+## Getting Started
+
+### How to Build
+
+```sh
+task build
+```
+
+### How to Run
+
+```sh
+task run
+```
+
+### How to Test
+
+```sh
+task test
+```
