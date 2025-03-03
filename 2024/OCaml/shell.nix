@@ -31,12 +31,5 @@ pkgs.mkShell {
     utop
 
     pkgs.gh # GitHub CLI
-
-    # Fallback language
-    pkgs.php84
-    pkgs.intelephense
-    pkgs.php84Packages.php-cs-fixer
-    pkgs.php84Packages.phpstan
-    pkgs.nodejs_18
   ];
 }
