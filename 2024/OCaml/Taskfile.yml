@@ -1,70 +1,28 @@
 # https://taskfile.dev
 
-version: '3'
-
+version: "3"
 vars:
   PROJECT_NAME: AoC_2024
-  YEAR: 2024
-  ASSET_DIR: input
-  SRC_DIR: lib
-  SRC_TEMPLATE: part.ml
-  TEST_DIR: test
-  TEST_TEMPLATE: test.ml
-
-dotenv: ['.env']
-
 tasks:
   default:
-    desc: "Prints this message"
+    desc: Prints this message
     cmds:
       - cmd: task --list-all
-
-  day:setup:
-    desc: "Creates the files needed to solve a day of Advent of Code"
-    requires:
-      vars:
-        - DAY
-    vars:
-      FORMATTED_DAY: "{{if (lt (atoi .DAY) 10)}}0{{.DAY}}{{else}}{{.DAY}}{{end}}"
-    cmds:
-      - cmd: mkdir --parents {{ .SRC_DIR }}/day_{{ .FORMATTED_DAY }}
-      - cmd: cp templates/{{.SRC_TEMPLATE}} {{.SRC_DIR}}/day_{{.FORMATTED_DAY}}/part_01.ml
-      - cmd: mkdir --parents {{ .TEST_DIR }}
-      - cmd: cp templates/{{.TEST_TEMPLATE}} {{.TEST_DIR}}/day_{{.FORMATTED_DAY}}_part_01.ml
-      - task: fetch-input
-      - task: build
-    silent: true
-
-  fetch-input:
-    desc: "Fetches your input from adventofcode.com for the specified day"
-    internal: true
-    requires:
-      vars:
-        - DAY
-    vars:
-      URI: https://adventofcode.com/{{ .YEAR }}/day/{{.DAY}}/input
-      FORMATTED_DAY: "{{if (lt (atoi .DAY) 10)}}0{{.DAY}}{{else}}{{.DAY}}{{end}}"
-    cmds:
-      - cmd: curl --cookie 'session={{.SESSION}}' {{.URI}} > {{.ASSET_DIR}}/day_{{.FORMATTED_DAY}}.txt
-    silent: true
-
   build:doc:
-    desc: "Builds documentation using ocamldoc"
+    desc: Builds documentation using ocamldoc
     preconditions:
       - which ocamldoc
     cmds:
       - cmd: ocamldoc -html -d docs bin/main.ml
     silent: true
-
   build:
-    desc: "Builds the project"
+    desc: Builds the project
     preconditions:
       - which dune
     cmds:
       - cmd: dune build
-
   test:
-    desc: "Runs the tests in the 'tests' directory"
+    desc: Runs the tests in the 'tests' directory
     ignore_error: true
     env:
       OUNIT_CI: true
@@ -74,13 +32,12 @@ tasks:
       - task: build
     cmds:
       - cmd: dune test {{.CLI_ARGS}}
-
   test:watch:
-    desc: "Continuously runs the tests in the 'tests' directory"
+    desc: Continuously runs the tests in the 'tests' directory
     ignore_error: true
     sources:
-      - "lib/**/*.ml"
-      - "test/**/*.ml"
+      - lib/**/*.ml
+      - test/**/*.ml
     env:
       OUNIT_CI: true
     preconditions:
@@ -89,9 +46,8 @@ tasks:
       - task: build
     cmds:
       - cmd: dune test --watch {{.CLI_ARGS}}
-
   run:
-    desc: "Runs the project"
+    desc: Runs the project
     preconditions:
       - which dune
     deps:

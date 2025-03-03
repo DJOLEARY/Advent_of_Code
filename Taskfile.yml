@@ -1,0 +1,36 @@
+# https://taskfile.dev
+
+version: "3"
+dotenv:
+  - .env
+tasks:
+  default:
+    desc: Prints this message
+    cmds:
+      - cmd: task --list-all
+  day:setup:
+    desc: Creates the files needed to solve a day of Advent of Code
+    requires:
+      vars:
+        - YEAR
+        - DAY
+        - LANG
+    vars:
+      FORMATTED_DAY: '{{if (lt (atoi .DAY) 10)}}0{{.DAY}}{{else}}{{.DAY}}{{end}}'
+    cmds:
+      - cmd: mkdir --parents {{.YEAR}}/{{.LANG}}/day_{{.FORMATTED_DAY}}
+      - task: fetch-input
+    silent: true
+  fetch-input:
+    desc: Fetches your input from adventofcode.com for the specified day
+    internal: true
+    requires:
+      vars:
+        - YEAR
+        - DAY
+    vars:
+      URI: https://adventofcode.com/{{ .YEAR }}/day/{{.DAY}}/input
+      FORMATTED_DAY: '{{if (lt (atoi .DAY) 10)}}0{{.DAY}}{{else}}{{.DAY}}{{end}}'
+    cmds:
+      - cmd: curl --cookie 'session={{.SESSION}}' {{.URI}} > {{.YEAR}}/_input/day_{{.FORMATTED_DAY}}.txt
+    silent: true
