@@ -11,7 +11,7 @@
 
 (maintainers "D.J. O'Leary")
 
-(license MIT)
+(license Unlicense)
 
 (documentation https://github.com/DJOLEARY/Advent_of_Code/blob/main/2024/OCaml/README.md)
 
