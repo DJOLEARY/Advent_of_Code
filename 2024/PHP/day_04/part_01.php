@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-spl_autoload_register(fn(string $className) => require "{$className}.php");
+spl_autoload_register(fn (string $className) => require "{$className}.php");
 
 // Assumes executed from workspace root
 $input = new Input('../_input/day_04.txt');
@@ -81,7 +81,7 @@ foreach ($grid->data as $y => $row) {
 
         $matchCount += array_reduce(
             array: $possibleMatches,
-            callback: fn(int $acc, string $possibleMatch): int => match ($possibleMatch) {
+            callback: fn (int $acc, string $possibleMatch): int => match ($possibleMatch) {
                 "XMAS" => $acc + 1,
                 default => $acc,
             },
